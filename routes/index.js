@@ -9,7 +9,7 @@ var logger = fs.createWriteStream('resultLog.txt', {
 });
 
 // Set Avro Engine
-var avro = require('./avro/avro-lib-v1.1.4.js');
+var avro = require('../engines/avro/avro-lib-v1.1.4.js');
 
 var resultDict = new Array();
 
