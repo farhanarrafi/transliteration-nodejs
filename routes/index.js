@@ -9,7 +9,7 @@ var logger = fs.createWriteStream('resultLog.txt', {
 });
 
 // Set Avro Engine
-var avro = require('../engines/avro/avro-lib-v1.1.4.js');
+var avro = require('../engines/avro/avroEngine.js');
 
 var resultDict = new Array();
 
@@ -51,33 +51,31 @@ function getAllNames(db) {
     if(err) {
       throw err;
     }
-    rows.forEach((row) => {
-      var text = avro.OmicronLab.Avro.Phonetic.parse(row.name);
-      resultDict.push(text);
-      logger.write(text + '\n');
-    });
+    return rows;
   });
 }
 
+
+function getAvroPhonetic() {
+  //var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
+  var database = getDatabase();
+  var namesList = getAllNames(database);
+  namesList.forEach((row) => {
+    var text = avro.getBengali(row.name);
+    resultDict.push(text);
+    logger.write(text + '\n');
+  });
+  closeDatabase(database);
+}
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  //var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
-  //var database = getDatabase();
-  //getAllNames(database);
-  //closeDatabase(database);
-  
   res.render('index', { transliterated_text: 'Hello', enword: '' });
 });
 
 router.post('/', function(req, res, next) {
-
-  //var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
-  //var database = getDatabase();
-  //getAllNames(database);
-  //closeDatabase(database);
 
   res.render('index', { transliterated_text: 'Hello', enword: req.body.enword });
 });

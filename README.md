@@ -3,6 +3,9 @@
 Phonetic Conversion Engine for transliteration from English to Bengali only.
 More languages will be added later.
 
+Google Transliteration Engine: https://developers.google.com/transliterate/v1/getting_started
+
+
 ## Installation
 
 ```bash
