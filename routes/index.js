@@ -64,13 +64,22 @@ function getAllNames(db) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
-  var database = getDatabase();
-  getAllNames(database);
-  closeDatabase(database);
+  //var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
+  //var database = getDatabase();
+  //getAllNames(database);
+  //closeDatabase(database);
   
+  res.render('index', { transliterated_text: 'Hello', enword: '' });
+});
 
-  res.render('index', { title: text });
+router.post('/', function(req, res, next) {
+
+  //var text = avro.OmicronLab.Avro.Phonetic.parse('Ami Banglay Gan Gai');
+  //var database = getDatabase();
+  //getAllNames(database);
+  //closeDatabase(database);
+
+  res.render('index', { transliterated_text: 'Hello', enword: req.body.enword });
 });
 
 

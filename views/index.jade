@@ -1,5 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row.justify-content-center.mb-3
+    .col-md-8
+      // Image and text
+      nav.navbar.navbar-light.bg-light
+        a.navbar-brand(href='#')
+          img.d-inline-block.align-top(src='/images/ms-icon-70x70.png', width='40', height='40', alt='')
+          | &#9;&#9;&#9;&#9;Geonames Bengali
+  .row.justify-content-center.mb-3
+    .col-md-8
+      h4.mb-3 Word
+      form.needs-validation(novalidate='', method='post')
+        .row
+          .col-md-6.mb-3
+            label(for='enword') Enter English Word for Transliteration
+            input#bnword.form-control(type='text', name='enword', placeholder='', value='#{enword||""}', required='')
+            .invalid-feedback
+              | Please enter a valid English word.
+        .row
+          .col-md-6.mb-3
+            button.btn.btn-primary.btn-lg.btn-block(type='submit') Find synsets
+  hr.mb-4
+  .row.justify-content-center.mb-3
+    .col-md-8
+      | RESULTS ARE GIVEN BELOW:
+  .row.justify-content-center.mb-3
+    .col-md-8
+      | WORD FORM: #{transliterated_text}
