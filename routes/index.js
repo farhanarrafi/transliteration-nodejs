@@ -11,6 +11,8 @@ var logger = fs.createWriteStream('resultLog.txt', {
 // Set Avro Engine
 var avro = require('../engines/avro/avroEngine.js');
 
+var google = require('../engines/google/jsApi.js');
+
 var resultDict = new Array();
 
 /**
